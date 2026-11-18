@@ -1,5 +1,6 @@
 from .records import TextRecord
 from .text import normalize_text, tokens
+from .domain import load_facts, summarize
 
 
 class TextWorkflow:
@@ -22,3 +23,7 @@ class TextWorkflow:
         if source is not None:
             records = [record for record in records if record['source'] == source]
         return records
+
+
+    def business_summary(self, path):
+        return summarize(load_facts(path))

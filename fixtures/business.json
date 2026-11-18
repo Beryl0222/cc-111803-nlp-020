@@ -1,0 +1,46 @@
+{
+  "endpoints": [
+    {
+      "product": "Mercury",
+      "path": "/export",
+      "version": "v1",
+      "status": "deprecated"
+    },
+    {
+      "product": "Mercury",
+      "path": "/status",
+      "version": "v1",
+      "status": "active"
+    },
+    {
+      "product": "Mercury",
+      "path": "/export",
+      "version": "v2",
+      "status": "active"
+    }
+  ],
+  "sections": [
+    {
+      "id": "S-1",
+      "anchor": "pagination-v1",
+      "endpoint": "/export",
+      "version": "v1"
+    },
+    {
+      "id": "S-2",
+      "anchor": "status-v1",
+      "endpoint": "/status",
+      "version": "v1"
+    }
+  ],
+  "examples": [
+    {
+      "id": "EX-1",
+      "section": "S-1",
+      "calls": [
+        "/export",
+        "/status"
+      ]
+    }
+  ]
+}

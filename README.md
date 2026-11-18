@@ -8,7 +8,7 @@
 
 ## 运行
 
-从项目根目录执行 `PYTHONPATH=src python -m nlp_software_doc_ownership.cli ingest fixtures/records.json` 导入样例，随后执行 `PYTHONPATH=src python -m nlp_software_doc_ownership.cli list` 查看记录。工作数据写入 `var/records.json`。
+从项目根目录执行 `PYTHONPATH=src python -m nlp_software_doc_ownership.cli ingest fixtures/records.json` 导入样例，随后执行 `PYTHONPATH=src python -m nlp_software_doc_ownership.cli list` 查看记录。工作数据写入 `var/records.json`。业务查询使用 fixtures/business.json 中的初始资料，约定见 fixtures/business-contract.md。执行 PYTHONPATH=src python -m nlp_software_doc_ownership.cli business 可查看当前业务目录结果。
 
 样例为本地合成文本。记录包含来源、修订号和原文，当前工作区对空白做统一处理，并提供字符及英文词项切分。
 

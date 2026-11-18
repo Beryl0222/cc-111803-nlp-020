@@ -17,3 +17,10 @@ def test_source_filter_uses_record_metadata(tmp_path):
     workflow = TextWorkflow(JsonRepository(tmp_path / 'records.json'))
     workflow.ingest([{'record_id': 'r1', 'source': 'a', 'revision': 1, 'text': '甲'}, {'record_id': 'r2', 'source': 'b', 'revision': 1, 'text': '乙'}])
     assert [row['record_id'] for row in workflow.list_records('b')] == ['r2']
+
+
+def test_business_view_uses_registered_facts():
+    from pathlib import Path
+    project = Path(__file__).resolve().parents[1]
+    workflow = TextWorkflow(JsonRepository(project / 'var' / 'records.json'))
+    assert workflow.business_summary(project / 'fixtures' / 'business.json') == ['EX-1']

@@ -3,12 +3,18 @@
     "record_id": "docs-v1",
     "source": "api-guide",
     "revision": 1,
-    "text": "服务 Mercury v1 的 /export 端点计划弃用，/status 继续支持。"
+    "text": "Mercury v1 的 /export 使用游标；下一个状态检查见段落 status-v1。"
   },
   {
-    "record_id": "team-change",
-    "source": "ownership-notice",
-    "revision": 2,
-    "text": "Mercury 现由 Data Platform 维护，v2 仅调整 /export 响应字段。"
+    "record_id": "move-note",
+    "source": "migration-notice",
+    "revision": 1,
+    "text": "v2 只调整 /export 的响应字段，/status 仍可用。"
+  },
+  {
+    "record_id": "reorder",
+    "source": "docs-review",
+    "revision": 1,
+    "text": "网页重排了目录，稳定锚点没有更改。"
   }
 ]
