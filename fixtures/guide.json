@@ -1,0 +1,19 @@
+{
+  "endpoints": [
+    {"product": "Mercury", "edition": "v1", "method": "GET", "path": "/export", "owner": "数据导出组", "accepts": ["limit"], "returns": ["job_id"]},
+    {"product": "Mercury", "edition": "v1", "method": "GET", "path": "/status", "owner": "作业状态组", "accepts": ["id"], "returns": ["state"]},
+    {"product": "Mercury", "edition": "v2", "method": "GET", "path": "/export", "owner": "文件交付组", "accepts": ["limit"], "returns": ["ticket"]},
+    {"product": "Mercury", "edition": "v2", "method": "GET", "path": "/status", "owner": "作业状态组", "accepts": ["id"], "returns": ["state"]}
+  ],
+  "pages": {
+    "export-v1": {"product": "Mercury", "edition": "v1", "anchor": "follow-export", "text": "导出返回作业编号，用该编号查当前状态。", "approvals": ["数据导出组", "作业状态组"], "calls": [
+      {"method": "GET", "path": "/export", "arguments": ["limit=2"], "result": ["job_id"]},
+      {"method": "GET", "path": "/status", "arguments": ["id=$job_id"], "result": ["state"]}
+    ]},
+    "export-v2": {"product": "Mercury", "edition": "v2", "anchor": "follow-export", "text": "导出返回票据编号。状态检查用这个编号。", "approvals": ["作业状态组"], "calls": [
+      {"method": "GET", "path": "/export", "arguments": ["limit=2"], "result": ["ticket"]},
+      {"method": "GET", "path": "/status", "arguments": ["id=$ticket"], "result": ["state"]}
+    ]}
+  },
+  "publications": {"mercury-v1": ["export-v1"]}
+}
