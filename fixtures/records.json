@@ -1,0 +1,14 @@
+[
+  {
+    "record_id": "docs-v1",
+    "source": "api-guide",
+    "revision": 1,
+    "text": "服务 Mercury v1 的 /export 端点计划弃用，/status 继续支持。"
+  },
+  {
+    "record_id": "team-change",
+    "source": "ownership-notice",
+    "revision": 2,
+    "text": "Mercury 现由 Data Platform 维护，v2 仅调整 /export 响应字段。"
+  }
+]
