@@ -3,18 +3,42 @@
     "record_id": "docs-v1",
     "source": "api-guide",
     "revision": 1,
-    "text": "Mercury v1 的 /export 使用游标；下一个状态检查见段落 status-v1。"
+    "text": "Mercury v1 的 /export 返回作业编号；下一个状态检查见段落 status-v1。"
   },
   {
     "record_id": "move-note",
     "source": "migration-notice",
     "revision": 1,
-    "text": "v2 只调整 /export 的响应字段，/status 仍可用。"
+    "text": "v2 只调整 /export 的响应字段，作业编号 job_id 替换为票据编号 ticket；/status 仍可用。"
   },
   {
     "record_id": "reorder",
     "source": "docs-review",
     "revision": 1,
     "text": "网页重排了目录，稳定锚点没有更改。"
+  },
+  {
+    "record_id": "gateway-exception",
+    "source": "migration-notice",
+    "revision": 1,
+    "text": "除旧网关外，v2 的 /export/gateway 仍返回作业编号，其余导出不再返回 job_id。"
+  },
+  {
+    "record_id": "previous-ambiguous",
+    "source": "docs-review",
+    "revision": 2,
+    "text": "重排后状态检查的前一个接口可能是普通导出或旧网关导出，取上一步返回的编号前先确认来源。"
+  },
+  {
+    "record_id": "v2-link",
+    "source": "api-guide",
+    "revision": 2,
+    "text": "v2 指南的状态参数说明参见段落 status-v1。"
+  },
+  {
+    "record_id": "default-limit",
+    "source": "api-guide",
+    "revision": 1,
+    "text": "v2 的 /export 默认值: 100，未传 limit 时按默认值限量。"
   }
 ]

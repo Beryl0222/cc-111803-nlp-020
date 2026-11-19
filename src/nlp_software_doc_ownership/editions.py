@@ -38,3 +38,7 @@ class DocPublisher:
 
     def receipt(self, publication):
         return deepcopy(self._catalog[publication])
+
+    def publication_ids(self):
+        """已刊发编号列表；读者按原版号找回当初发布的内容。"""
+        return tuple(self._catalog)

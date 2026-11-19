@@ -7,6 +7,8 @@ class Call:
     path: str
     arguments: tuple[str, ...]
     result: tuple[str, ...]
+    # 用法标记：用于匹配“除旧网关外”一类例外的限定范围；旧数据缺省为空
+    tags: tuple[str, ...] = ()
 
 
 class ExampleCheck:

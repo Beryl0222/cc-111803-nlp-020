@@ -17,6 +17,18 @@
       "path": "/export",
       "version": "v2",
       "status": "active"
+    },
+    {
+      "product": "Mercury",
+      "path": "/export/gateway",
+      "version": "v1",
+      "status": "deprecated"
+    },
+    {
+      "product": "Mercury",
+      "path": "/export/gateway",
+      "version": "v2",
+      "status": "active"
     }
   ],
   "sections": [

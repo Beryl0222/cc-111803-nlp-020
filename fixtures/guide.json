@@ -2,16 +2,27 @@
   "endpoints": [
     {"product": "Mercury", "edition": "v1", "method": "GET", "path": "/export", "owner": "数据导出组", "accepts": ["limit"], "returns": ["job_id"]},
     {"product": "Mercury", "edition": "v1", "method": "GET", "path": "/status", "owner": "作业状态组", "accepts": ["id"], "returns": ["state"]},
+    {"product": "Mercury", "edition": "v1", "method": "GET", "path": "/export/gateway", "owner": "旧网关组", "accepts": ["limit"], "returns": ["job_id"]},
     {"product": "Mercury", "edition": "v2", "method": "GET", "path": "/export", "owner": "文件交付组", "accepts": ["limit"], "returns": ["ticket"]},
-    {"product": "Mercury", "edition": "v2", "method": "GET", "path": "/status", "owner": "作业状态组", "accepts": ["id"], "returns": ["state"]}
+    {"product": "Mercury", "edition": "v2", "method": "GET", "path": "/status", "owner": "作业状态组", "accepts": ["id"], "returns": ["state"]},
+    {"product": "Mercury", "edition": "v2", "method": "GET", "path": "/export/gateway", "owner": "旧网关组", "accepts": ["limit"], "returns": ["job_id"]}
   ],
   "pages": {
-    "export-v1": {"product": "Mercury", "edition": "v1", "anchor": "follow-export", "text": "导出返回作业编号，用该编号查当前状态。", "approvals": ["数据导出组", "作业状态组"], "calls": [
+    "export-v1": {"product": "Mercury", "edition": "v1", "anchor": "follow-export", "text": "导出返回作业编号，用该编号查当前状态。默认值: 100。", "approvals": ["数据导出组", "作业状态组"], "calls": [
       {"method": "GET", "path": "/export", "arguments": ["limit=2"], "result": ["job_id"]},
       {"method": "GET", "path": "/status", "arguments": ["id=$job_id"], "result": ["state"]}
     ]},
-    "export-v2": {"product": "Mercury", "edition": "v2", "anchor": "follow-export", "text": "导出返回票据编号。状态检查用这个编号。", "approvals": ["作业状态组"], "calls": [
+    "export-v2": {"product": "Mercury", "edition": "v2", "anchor": "follow-export", "text": "导出返回票据编号。状态检查取上一步返回的作业编号，用这个编号。", "approvals": ["作业状态组"], "calls": [
       {"method": "GET", "path": "/export", "arguments": ["limit=2"], "result": ["ticket"]},
+      {"method": "GET", "path": "/status", "arguments": ["id=$ticket"], "result": ["state"]}
+    ]},
+    "gateway-v2": {"product": "Mercury", "edition": "v2", "anchor": "legacy-gateway-export", "text": "除旧网关外，v2 导出一律返回票据编号；旧网关继续返回作业编号。", "approvals": ["旧网关组", "作业状态组"], "calls": [
+      {"method": "GET", "path": "/export/gateway", "arguments": ["limit=2"], "result": ["job_id"], "tags": ["旧网关"]},
+      {"method": "GET", "path": "/status", "arguments": ["id=$job_id"], "result": ["state"], "tags": ["旧网关"]}
+    ]},
+    "follow-export-mixed": {"product": "Mercury", "edition": "v2", "anchor": "follow-export-mixed", "text": "前一个接口返回票据编号；若重排后前一个接口不唯一，先保留原句。", "approvals": [], "calls": [
+      {"method": "GET", "path": "/export", "arguments": ["limit=2"], "result": ["ticket"]},
+      {"method": "GET", "path": "/export/gateway", "arguments": ["limit=2"], "result": ["job_id"]},
       {"method": "GET", "path": "/status", "arguments": ["id=$ticket"], "result": ["state"]}
     ]}
   },
